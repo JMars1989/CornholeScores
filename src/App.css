@@ -1,0 +1,88 @@
+/* ELEMENT STYLES -------------------- */
+body {
+  background: #e8e7e7;
+  font-family: arial;
+  text-transform: uppercase;
+  padding: 2%;
+  margin: 0%;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(199, 200, 204);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.playerList {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 20px;
+}
+
+.teamName {
+  padding-left: 10%;
+}
+
+.playerName {
+  background-color: rgb(199, 200, 204);
+  width: 400px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.playerScore {
+  background-color: rgb(199, 200, 204);
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.form {
+  padding-top: 5px;
+}
+
+input[type='text'],
+input[type='submit'] {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border: none;
+  background: #404040;
+  color: #ffffff;
+  font-weight: 100;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.scoreButton {
+  font-family: inherit;
+  border: none;
+  background: #404040;
+  color: #ffffff;
+  font-weight: 100;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.removeButton {
+  background-color: rgb(199, 200, 204);
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
