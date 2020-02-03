@@ -68,6 +68,17 @@ class Scoreboard extends Component {
     });
   };
 
+  componentDidUpdate() {
+    const playersCopy = [...this.state.players];
+    playersCopy.map(player => {
+      if (player.score === 21) {
+        alert(`${player.name} is the Winner!`);
+        return player;
+      }
+      return player;
+    });
+  }
+
   render() {
     const teamOne = this.state.players.filter(player => player.team === 'one');
     const teamTwo = this.state.players.filter(player => player.team === 'two');
