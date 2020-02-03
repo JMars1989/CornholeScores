@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PlayerList from './Components/PlayerList';
-// import Player from './Components/Player';
-// import AddPlayerForm from './Components/AddPlayer';
 import Header from './Components/Header';
 import './App.css';
 
@@ -28,32 +26,14 @@ class Scoreboard extends Component {
     this.handleIncrementScoreByName = this.handleIncrementScoreByName.bind(
       this
     );
-    this.handleDecrementScoreByName = this.handleDecrementScoreByName.bind(
-      this
-    );
   }
 
-  handleIncrementScoreByName = name => {
+  handleIncrementScoreByName = (name, increment) => {
     const playersCopy = [...this.state.players];
 
     playersCopy.map(player => {
       if (player.name === name) {
-        player.score = player.score + 1;
-      }
-      return player;
-    });
-
-    this.setState({
-      players: playersCopy
-    });
-  };
-
-  handleDecrementScoreByName = name => {
-    const playersCopy = [...this.state.players];
-
-    playersCopy.map(player => {
-      if (player.name === name) {
-        player.score = player.score + 1;
+        player.score = player.score + increment;
       }
       return player;
     });
@@ -100,7 +80,6 @@ class Scoreboard extends Component {
           team={'one'}
           removePlayer={this.handleRemovePlayer}
           incrementScoreByName={this.handleIncrementScoreByName}
-          decrementScoreByName={this.handleDecrementScoreByName}
           addPlayer={this.handleAddPlayer}
         />
 
@@ -109,7 +88,6 @@ class Scoreboard extends Component {
           team={'two'}
           removePlayer={this.handleRemovePlayer}
           incrementScoreByName={this.handleIncrementScoreByName}
-          decrementScoreByName={this.handleDecrementScoreByName}
           addPlayer={this.handleAddPlayer}
         />
       </div>

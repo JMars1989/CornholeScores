@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Player from './Player';
 import AddPlayerForm from './AddPlayer';
 
@@ -8,7 +9,6 @@ const PlayerList = props => {
     team,
     removePlayer,
     incrementScoreByName,
-    decrementScoreByName,
     addPlayer
   } = props;
 
@@ -23,7 +23,6 @@ const PlayerList = props => {
           index={index}
           removePlayer={removePlayer}
           incrementScoreByName={incrementScoreByName}
-          decrementScoreByName={decrementScoreByName}
         />
       ))}
       <AddPlayerForm addPlayer={addPlayer} team={team} />
@@ -32,3 +31,11 @@ const PlayerList = props => {
 };
 
 export default PlayerList;
+
+PlayerList.propTypes = {
+  players: PropTypes.arrayOf(PropTypes.object),
+  team: PropTypes.string.isRequired,
+  removePlayer: PropTypes.func.isRequired,
+  incrementScoreByName: PropTypes.func.isRequired,
+  addPlayer: PropTypes.func.isRequired
+};

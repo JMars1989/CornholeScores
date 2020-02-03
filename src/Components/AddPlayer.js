@@ -25,10 +25,11 @@ class AddPlayer extends Component {
 
   render() {
     return (
-      <div className='form'>
+      <div>
         <form onSubmit={this.handleSubmit}>
           <label>
             <input
+              className='form'
               type='text'
               value={this.state.value}
               onChange={this.handleChange}
