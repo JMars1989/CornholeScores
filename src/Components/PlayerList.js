@@ -12,9 +12,17 @@ const PlayerList = props => {
     addPlayer
   } = props;
 
+  const teamScore = players.reduce((score, player) => score + player.score, 0);
+
+  if (teamScore === 21) {
+    alert(`Team ${team} is the Winner!`);
+  }
+
   return (
     <div>
-      <h2 className='teamName'>Team {team}</h2>
+      <h2 className='teamName'>
+        Team {team}: {teamScore}
+      </h2>
       {players.map((player, index) => (
         <Player
           name={player.name}
