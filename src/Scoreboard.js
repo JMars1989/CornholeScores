@@ -58,6 +58,37 @@ class Scoreboard extends Component {
     });
   };
 
+
+  // handleAddPlayerSinglesOrDoubles = (name, team) => {
+  //   //sum total players with player.team === team
+  //   let playersOnTeam = 0;
+  //   this.state.players.forEach(player => {
+  //     if (player.team === team ){
+  //       playersOnTeam++;
+  //     }
+  //   });
+
+  //   console.log(playersOnTeam);
+  //   // if(this.state.singlesOrDoubles === "singles"){
+      
+  //   // }
+
+
+  //   const newPlayer = {
+  //     name: name,
+  //     score: 0,
+  //     team: team
+  //   };
+
+  //   const playersCopy = [...this.state.players];
+  //   const newPlayers = playersCopy.concat([newPlayer]);
+
+  //   this.setState({
+  //     players: newPlayers
+  //   });
+  // };
+
+
   handleRemovePlayer = name => {
     const newPlayers = [...this.state.players].filter(
       player => player.name !== name

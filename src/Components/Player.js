@@ -5,7 +5,7 @@ const Player = props => {
   const { name, score, removePlayer, incrementScoreByName } = props;
 
   return (
-    <div className='playerList'>
+    <div className='player'>
       <button className='removeButton' onClick={() => removePlayer(name)}>
         X
       </button>
