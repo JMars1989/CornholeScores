@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import PlayerList from './Components/PlayerList';
 import Header from './Components/Header';
+import PlayerList from './Components/PlayerList';
+import SinglesOrDoublesButtons from './Components/SinglesOrDoublesButtons';
 import './App.css';
 
 class Scoreboard extends Component {
@@ -19,13 +20,15 @@ class Scoreboard extends Component {
           score: 0,
           team: 'two'
         }
-      ]
+      ],
+      singlesOrDoubles: 'doubles'
     };
     this.handleAddPlayer = this.handleAddPlayer.bind(this);
     this.handleRemovePlayer = this.handleRemovePlayer.bind(this);
     this.handleIncrementScoreByName = this.handleIncrementScoreByName.bind(
       this
     );
+    this.handleSinglesOrDoublesButton = this.handleSinglesOrDoublesButton.bind(this);
   }
 
   handleIncrementScoreByName = (name, increment) => {
@@ -43,37 +46,7 @@ class Scoreboard extends Component {
     });
   };
 
-  handleAddPlayer = (name, team) => {
-    const newPlayer = {
-      name: name,
-      score: 0,
-      team: team
-    };
-
-    const playersCopy = [...this.state.players];
-    const newPlayers = playersCopy.concat([newPlayer]);
-
-    this.setState({
-      players: newPlayers
-    });
-  };
-
-
-  // handleAddPlayerSinglesOrDoubles = (name, team) => {
-  //   //sum total players with player.team === team
-  //   let playersOnTeam = 0;
-  //   this.state.players.forEach(player => {
-  //     if (player.team === team ){
-  //       playersOnTeam++;
-  //     }
-  //   });
-
-  //   console.log(playersOnTeam);
-  //   // if(this.state.singlesOrDoubles === "singles"){
-      
-  //   // }
-
-
+  // handleAddPlayer = (name, team) => {
   //   const newPlayer = {
   //     name: name,
   //     score: 0,
@@ -87,6 +60,39 @@ class Scoreboard extends Component {
   //     players: newPlayers
   //   });
   // };
+
+  //singles or doubles version
+  handleAddPlayer = (name, team) => {
+    //sum total players with player.team === team
+    let playersOnTeam = 1;
+    this.state.players.forEach(player => {
+      if (player.team === team) {
+        playersOnTeam++;
+      }
+    });
+
+    console.log(playersOnTeam);
+    if (this.state.singlesOrDoubles === "singles" && playersOnTeam > 1) {
+      alert('Team is full!');
+      return
+    } else if (this.state.singlesOrDoubles === "doubles" && playersOnTeam > 2) {
+      alert('Team is full!');
+      return
+    }
+
+    const newPlayer = {
+      name: name,
+      score: 0,
+      team: team
+    };
+
+    const playersCopy = [...this.state.players];
+    const newPlayers = playersCopy.concat([newPlayer]);
+
+    this.setState({
+      players: newPlayers
+    });
+  };
 
 
   handleRemovePlayer = name => {
@@ -111,6 +117,12 @@ class Scoreboard extends Component {
   //   });
   // }
 
+  handleSinglesOrDoublesButton = singlesOrDoubles => {
+    this.setState({
+      singlesOrDoubles: singlesOrDoubles
+    })
+  }
+
   render() {
     const teamOne = this.state.players.filter(player => player.team === 'one');
     const teamTwo = this.state.players.filter(player => player.team === 'two');
@@ -118,7 +130,7 @@ class Scoreboard extends Component {
     return (
       <div>
         <Header />
-
+        <SinglesOrDoublesButtons choose={this.handleSinglesOrDoublesButton} currentState={this.state.singlesOrDoubles} />
         <PlayerList
           players={teamOne}
           team={'one'}
